@@ -1,0 +1,23 @@
+<define /ColoredList |input|>
+  <for |item| of=input.item>
+    <${item}/>
+  </>
+
+  <effect () {
+    for (const el of input.item.ref) {
+      el().style.color = input.color;
+    }
+  } />
+</>
+
+<let /color = "purple">
+
+<ColoredList color=color>
+  <for |item| of=["Most", "Interesting", "Thing"]>
+    <@item ref=el>
+      <div /el>${item}</div>
+    </@item>
+  </for>
+</ColoredList>
+
+<button onClick() { color = "teal" }>Set Color</button>

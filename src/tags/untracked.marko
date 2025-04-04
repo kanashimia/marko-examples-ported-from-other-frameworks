@@ -1,0 +1,11 @@
+static const latestValues = new WeakMap()
+
+<let /key = {}>
+
+<let /latest = latestValues.set(key, input.value)>
+
+<lifecycle onMount() {
+  latestValues.set(key, input.value)
+}>
+
+<return = (latest, () => latestValues.get(key))>

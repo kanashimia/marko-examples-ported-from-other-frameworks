@@ -1,0 +1,19 @@
+static const posts = import.meta.glob("#src/routes/_tutorials/**/*.marko", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+<const /tutorials = (
+  Object.keys(posts)
+    .map(x => x.match(/.*\/(.+)\+page.marko/)[1])
+    .sort()
+)>
+
+<main>
+  <ul>
+    <for |path| of=tutorials>
+      <li><a href=`/${path}`>${path}</a></li>
+    </for>
+  </ul>
+</main>

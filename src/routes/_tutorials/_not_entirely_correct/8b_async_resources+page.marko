@@ -1,0 +1,27 @@
+static async function fetchUser(id) {
+  return await fetch(`https://swapi.dev/api/people/${id}/`).then(r => r.json());
+}
+
+<let /userId>
+
+<input
+  type="number"
+  min="1"
+  placeholder="Enter Numeric Id"
+  onInput() {
+    userId = this.value
+  }
+/>
+
+<if = userId>
+  <try>
+    <await |user| = fetchUser(userId)>
+      <div>
+        <pre>${JSON.stringify(user, null, 2)}</pre>
+      </div>
+    </>
+    <@placeholder>
+      <span>Loading...</span>
+    </>
+  </try>
+</if>

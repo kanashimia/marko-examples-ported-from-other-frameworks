@@ -1,0 +1,13 @@
+<let /count = 0 />
+
+<lifecycle
+  prevCount=count
+  onMount() {
+    this.timer = setInterval(() => count = this.prevCount + 1, 500)
+  }
+  onDestroy() {
+    clearInterval(this.timer);
+  }
+>
+
+<div>Count: ${count}</div>

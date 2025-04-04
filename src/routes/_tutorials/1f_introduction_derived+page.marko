@@ -1,0 +1,11 @@
+<let /count = 0 />
+<const /doubleCount = count * 2 />
+
+<lifecycle
+  prevCount=count
+  onMount() {
+    setInterval(() => count = this.prevCount + 1, 500)
+  }
+>
+
+<div>Count: ${doubleCount}</div>

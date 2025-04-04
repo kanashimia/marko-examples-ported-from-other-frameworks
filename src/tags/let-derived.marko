@@ -1,0 +1,23 @@
+// export interface Input {
+//   value: any
+//   valueChange: (newVal: any) => void
+//   path: (string | number)[]
+// }
+
+<const/value=input.path.reduce((acc, val) => acc[val], input.value)/>
+
+<return=value valueChange(v) {
+  const newValue = { ...input.value }
+  let curr = newValue
+  for (const member of input.path) {
+    if (Array.isArray(curr[member])) {
+      curr[member] = [...curr[member]]
+    } else if (typeof curr[member] === "object") {
+      curr[member] = { ...curr[member] }
+    } else {
+      curr[member] = v
+    }
+    curr = curr[member]
+  }
+  input.valueChange(newValue)
+}/>

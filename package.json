@@ -1,0 +1,29 @@
+{
+  "name": "marko-examples-ported-from-other-frameworks",
+  "description": "SolidJS tutorial examples in Marko",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "marko": "^6.0.0-next"
+  },
+  "devDependencies": {
+    "@marko/run": "^0.6.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-marko": "^3.1.12"
+  },
+  "overrides": {
+    "@marko/run": {
+      "marko": "^6.0.0-next"
+    }
+  },
+  "scripts": {
+    "dev": "marko-run",
+    "build": "marko-run build",
+    "preview": "marko-run preview",
+    "start": "node --enable-source-maps ./dist/index.mjs"
+  },
+  "imports": {
+    "#src/": "src/"
+  }
+}

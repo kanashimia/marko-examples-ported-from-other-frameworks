@@ -1,0 +1,40 @@
+<let/todos=([] as Array<{ id: number; text: string; completed: boolean }>)/>
+<let/todoId=0/>
+
+<const/addTodo(text: string) {
+  todos = [...todos, { id: ++todoId, text, completed: false }]
+}/>
+
+<const/toggleTodo(id: number) {
+  todos = todos.map((todo) =>
+    todo.id !== id ? todo : { ...todo, completed: !todo.completed }
+  )
+}/>
+
+<div>
+  <input/inputEl>
+  <button onClick() {
+    const input = inputEl()
+    if (!input.value.trim()) return
+    addTodo(input.value)
+    input.value = ""
+  }>
+    Add Todo
+  </button>
+</div>
+<for|todo| of=todos>
+  <const/{ id, text }=todo/>
+  <log=`Creating ${text}`/>
+  <div>
+    <input
+      type="checkbox"
+      checked=todo.completed
+      onChange() {
+        toggleTodo(id)
+      }
+    >
+    <span style={ "text-decoration": todo.completed ? "line-through" : "none" }>
+      ${text}
+    </span>
+  </div>
+</for>

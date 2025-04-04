@@ -1,0 +1,10 @@
+<let /a = 1>
+<let /b = 1>
+
+<untracked /bRef = b/>
+<effect () {
+  console.log(a, bRef());
+}/>
+
+<button onClick() { a += 1 }>Increment A</button>
+<button onClick() { b += 1 }>Increment B</button>

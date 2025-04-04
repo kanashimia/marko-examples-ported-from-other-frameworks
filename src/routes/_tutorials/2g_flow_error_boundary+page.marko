@@ -1,0 +1,16 @@
+<define /Broken>
+  <render-effect () {
+    throw new Error("Oh No")
+  } />
+  Never Getting Here
+</define>
+
+<div>Before</div>
+<try>
+  <Broken />
+  <@catch |err|>
+    ${err}
+  </>
+</try>
+<div>After</div>
+

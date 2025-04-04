@@ -1,0 +1,15 @@
+<let /num = 0 />
+<lifecycle
+  prevNum=num
+  onMount() {
+    setInterval(() => num = (this.prevNum + 1) % 255, 30)
+  }
+/>
+
+<div style={
+  "color": `rgb(${num}, 180, ${num})`,
+  "font-weight": 800,
+  "font-size": `${num}px`,
+}>
+  Some Text
+</div>

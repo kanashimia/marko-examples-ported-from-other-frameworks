@@ -1,0 +1,9 @@
+<define /Greeting |input|>
+  <const /{ greeting, name, ...others } = input>
+  <h3 ...others>${greeting} ${name}</h3>
+</>
+
+<let /name = "Jakob">
+
+<Greeting greeting="Yo" name=name style="color: teal;" />
+<button onClick() { name = "Jarod" }>Set Name</button>
