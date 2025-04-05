@@ -1,0 +1,95 @@
+<!--
+import { render } from "solid-js/web";
+import { For, createSignal } from "solid-js";
+
+const App = () => {
+  const [todos, setTodos] = createSignal([])
+  let input;
+  let todoId = 0;
+
+  const addTodo = (text) => {
+    const [completed, setCompleted] = createSignal(false); 
+    setTodos([...todos(), { id: ++todoId, text, completed, setCompleted }]);
+  }
+  const toggleTodo = (id) => {
+    const todo = todos().find((t) => t.id === id);
+    if (todo) todo.setCompleted(!todo.completed())
+  }
+
+  return (
+    <>
+      <div>
+        <input ref={input} />
+        <button
+          onClick={(e) => {
+            if (!input.value.trim()) return;
+            addTodo(input.value);
+            input.value = "";
+          }}
+        >
+          Add Todo
+        </button>
+      </div>
+      <For each={todos()}>
+        {(todo) => {
+          const { id, text } = todo;
+          console.log(`Creating ${text}`)
+          return <div>
+            <input
+              type="checkbox"
+              checked={todo.completed()}
+              onchange={[toggleTodo, id]}
+            />
+            <span
+              style={{ "text-decoration": todo.completed() ? "line-through" : "none"}}
+            >{text}</span>
+          </div>
+        }}
+      </For>
+    </>
+  );
+};
+
+render(App, document.getElementById("app"));
+-->
+
+<let/todos=([] as Array<{ id: number; text: string; completed: boolean }>)/>
+<let/todoId=0/>
+
+<const/addTodo(text: string) {
+  todos = [...todos, { id: ++todoId, text, completed: false }]
+}/>
+
+<const/toggleTodo(id: number) {
+  todos = todos.map((todo) =>
+    todo.id !== id ? todo : { ...todo, completed: !todo.completed }
+  )
+}/>
+
+<div>
+  <input/inputEl>
+  <button onClick() {
+    const input = inputEl()
+    if (!input.value.trim()) return
+    addTodo(input.value)
+    input.value = ""
+  }>
+    Add Todo
+  </button>
+</div>
+<for|todo| of=todos>
+  <const/{ id, text }=todo/>
+  <log=`Creating ${text}`/>
+  <div>
+    <input
+      type="checkbox"
+      checked=todo.completed
+      onChange() {
+        toggleTodo(id)
+      }
+    >
+    <span style={ "text-decoration": todo.completed ? "line-through" : "none" }>
+      ${text}
+    </span>
+  </div>
+</for>
