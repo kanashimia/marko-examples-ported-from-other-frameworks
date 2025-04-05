@@ -1,0 +1,9 @@
+<define /LazyComponent |componentInput|>
+  <try>
+    <await|Component|=input.value>
+      <Component ...componentInput />
+    </>
+    <@placeholder>${""}</>
+  </try>
+</define>
+<return=LazyComponent>
